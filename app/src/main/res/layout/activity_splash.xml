@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_soft"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="28dp">
@@ -13,28 +13,52 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Badge Atas -->
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         app:cardBackgroundColor="@color/coffee_cream"
-        app:cardCornerRadius="65dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="0dp">
 
-        <ImageView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="☕ ARTISAN COFFEE &amp; PASTRY"
+            android:textColor="@color/coffee_dark"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Lingkaran Logo Modern -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="75dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/coffee_cream"
+        app:strokeWidth="4dp">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Logo Aplikasi"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo_kopi" />
+            android:gravity="center"
+            android:text="☕"
+            android:textColor="@color/coffee_primary"
+            android:textSize="64sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:text="Kopi dan Nyemil"
-        android:textColor="@color/text_primary"
-        android:textSize="26sp"
+        android:textColor="@color/coffee_dark"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
@@ -43,7 +67,7 @@
         android:layout_marginTop="8dp"
         android:text="Get a taste of your wish"
         android:textColor="@color/text_secondary"
-        android:textSize="15sp" />
+        android:textSize="16sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -53,13 +77,14 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStartNow"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:text="Start now"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="@color/dark_button"
-        app:cornerRadius="12dp" />
+        app:cornerRadius="16dp"
+        app:elevation="4dp" />
 
 </LinearLayout>

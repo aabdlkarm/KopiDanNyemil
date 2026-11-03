@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_soft"
     android:orientation="vertical">
 
     <!-- ======================== HALAMAN 5: HOME ======================== -->
@@ -13,25 +13,82 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="28dp">
+        android:paddingHorizontal="22dp"
+        android:paddingTop="24dp">
 
         <TextView
             android:id="@+id/tvGreetingHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Halo Nama,"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/coffee_dark"
             android:textSize="26sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="14dp"
+            android:layout_marginTop="2dp"
+            android:text="Mau ngopi atau nyemil apa hari ini?"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <!-- Kartu Promo Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/dark_button"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PROMO SPESIAL"
+                        android:textColor="@color/coffee_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Gratis Ongkir &amp; Fresh Brew Setiap Hari!"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="☕🥐"
+                    android:textSize="32sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="12dp"
             android:text="Makanan &amp; Minuman"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/coffee_dark"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -56,58 +113,127 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Alamat"
-                android:textColor="@color/text_primary"
-                android:textSize="28sp"
+                android:layout_marginTop="8dp"
+                android:text="Alamat Pengiriman"
+                android:textColor="@color/coffee_dark"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvSelectedOrderInfo"
-                android:layout_width="wrap_content"
+            <!-- Kartu Ringkasan Item yang Dipilih -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginBottom="20dp"
-                android:text="Pesanan: Kopi Susu Gula Aren"
-                android:textColor="@color/coffee_primary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="@color/coffee_cream"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
 
-            <EditText
-                android:id="@+id/etOrderNama"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginBottom="16dp"
-                android:background="@android:drawable/edit_text"
-                android:hint="Nama Lengkap"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="14dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
 
-            <EditText
-                android:id="@+id/etOrderAlamat"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginBottom="16dp"
-                android:background="@android:drawable/edit_text"
-                android:gravity="top|start"
-                android:hint="Alamat"
-                android:inputType="textMultiLine"
-                android:padding="14dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛍️"
+                        android:textSize="22sp" />
 
-            <EditText
-                android:id="@+id/etOrderPatokan"
+                    <TextView
+                        android:id="@+id/tvSelectedOrderInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Pesanan: Kopi Susu Gula Aren"
+                        android:textColor="@color/coffee_dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@android:drawable/edit_text"
-                android:gravity="top|start"
-                android:hint="Patokan atau detail lengkap"
-                android:inputType="textMultiLine"
-                android:padding="14dp" />
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:hint="Nama Lengkap Penerima"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/coffee_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOrderNama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:hint="Alamat Lengkap"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/coffee_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOrderAlamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Patokan atau detail lengkap"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/coffee_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOrderPatokan"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <Space
                 android:layout_width="match_parent"
@@ -117,15 +243,15 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOrderDanKirim"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="20dp"
                 android:text="Order dan Kirim"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/dark_button"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="16dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -136,45 +262,102 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="28dp"
+        android:padding="24dp"
         android:visibility="gone">
 
         <TextView
             android:id="@+id/tvGreetingProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="Halo Nama,"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/coffee_dark"
             android:textSize="26sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Profile Saya"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="16dp"
-            android:text="Profile Setting"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/etProfileNama"
+        <!-- Kartu Avatar Member -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:background="@android:drawable/edit_text"
-            android:hint="nama"
-            android:inputType="textPersonName"
-            android:paddingHorizontal="14dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cardBackgroundColor="@color/coffee_cream"
+                        app:cardCornerRadius="30dp"
+                        app:cardElevation="0dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="👤"
+                            android:textSize="28sp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Profile Saya"
+                            android:textColor="@color/coffee_dark"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Profile Setting • Member Aktif"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Lengkap"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/coffee_primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfileNama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <Space
             android:layout_width="match_parent"
@@ -184,14 +367,14 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveProfile"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="58dp"
             android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:backgroundTint="@color/dark_button"
-            app:cornerRadius="12dp" />
+            app:cornerRadius="16dp" />
     </LinearLayout>
 
     <!-- ======================== BOTTOM NAVIGATION ======================== -->
@@ -200,6 +383,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        app:elevation="12dp"
         app:itemIconTint="@color/dark_button"
         app:itemTextColor="@color/dark_button"
         app:menu="@menu/bottom_nav_menu" />

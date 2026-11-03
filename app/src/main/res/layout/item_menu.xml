@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_marginBottom="14dp"
     app:cardBackgroundColor="@color/card_bg"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="2dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp"
     app:strokeColor="@color/card_stroke"
     app:strokeWidth="1dp">
 
@@ -17,21 +17,34 @@
         android:orientation="horizontal"
         android:padding="14dp">
 
-        <!-- Kotak Foto Menu menggunakan ImageView -->
+        <!-- Bingkai Foto Menu -->
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             app:cardBackgroundColor="@color/coffee_cream"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="0dp">
 
-            <ImageView
-                android:id="@+id/ivFotoMenu"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="Foto Menu"
-                android:scaleType="centerCrop"
-                android:src="@drawable/kopi_gula_aren" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvFotoPlaceholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="☕"
+                    android:textColor="@color/coffee_dark"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:id="@+id/ivFotoMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Foto Menu"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Detail Makanan/Minuman -->
@@ -55,20 +68,46 @@
                 android:id="@+id/tvDeskripsiMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:text="• Espresso, susu, gula aren"
                 android:textColor="@color/text_secondary"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvHargaMenu"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="• Rp 22.000"
-                android:textColor="@color/coffee_primary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvHargaMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rp 22.000"
+                    android:textColor="@color/coffee_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/dark_button"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="+ Pesan"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
