@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_button">#FF1A1C1E</color>
+    <color name="coffee_primary">#FF6F4E37</color>
+    <color name="coffee_cream">#FFF5DEC9</color>
+    <color name="card_bg">#FFFDF6F0</color>
+    <color name="card_stroke">#FFE6CCB2</color>
+    <color name="text_primary">#FF1E1E1E</color>
+    <color name="text_secondary">#FF6E6E6E</color>
+    <color name="success_green">#FFA8E6CF</color>
+    <color name="success_text">#FF1B5E20</color>
+</resources>
