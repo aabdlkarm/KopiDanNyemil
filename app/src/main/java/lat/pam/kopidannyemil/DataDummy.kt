@@ -1,23 +1,12 @@
 package lat.pam.kopidannyemil
 
-data class MenuItem(
-    val nama: String,
-    val deskripsi: String,
-    val harga: String,
-    val kategori: String,
-    val fotoResId: Int
-)
-
+/**
+ * Penyimpanan data sementara (in-memory).
+ * Data kembali ke nilai awal setiap aplikasi ditutup.
+ */
 object DataDummy {
-    var namaLengkap: String = "Budi Santoso"
-    var username: String = "budi"
-    var password: String = "12345"
 
-    var alamatPengiriman: String = ""
-    var patokanAlamat: String = ""
-    var itemTerpilih: String = "Kopi Susu Gula Aren"
-
-    val daftarMenu = listOf(
+    val daftarMenu: List<MenuItem> = listOf(
         MenuItem(
             nama = "Kopi Susu Gula Aren",
             deskripsi = "Espresso, susu, gula aren",
@@ -61,4 +50,17 @@ object DataDummy {
             fotoResId = R.drawable.croissant
         )
     )
+
+    var namaLengkap: String = "Budi Santoso"
+    var username: String = "budi"
+    var password: String = "12345"
+
+    var alamatPengiriman: String = ""
+    var patokanAlamat: String = ""
+
+    /** Item yang sedang dipilih untuk dipesan. Default: menu pertama. */
+    var itemTerpilih: String = labelPesanan(daftarMenu.first())
+
+    /** Format teks pilihan pesanan, misalnya "Donat Cokelat (Rp 12.000)". */
+    fun labelPesanan(item: MenuItem): String = "${item.nama} (${item.harga})"
 }

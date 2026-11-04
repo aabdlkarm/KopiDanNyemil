@@ -43,13 +43,14 @@
         app:strokeColor="@color/coffee_cream"
         app:strokeWidth="4dp">
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="☕"
-            android:textColor="@color/coffee_primary"
-            android:textSize="64sp" />
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/app_name"
+            android:padding="22dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_kopi" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView

@@ -1,41 +1,37 @@
 # ☕ Kopi dan Nyemil - Mobile App
 
-Aplikasi mobile Android pemesanan kopi dan camilan yang dibangun menggunakan **Kotlin** dan **XML Views** di Android Studio. Proyek ini mengimplementasikan seluruh alur antarmuka dari wireframe **Kopi dan Nyemil** menggunakan penyimpanan data statis (*dummy data*) dan navigasi modern menggunakan **Bottom Navigation**.
+Aplikasi Android pemesanan kopi dan camilan, dibangun dengan **Kotlin** dan **XML Views** (Material Components) di Android Studio. Proyek ini mengimplementasikan seluruh alur layar dari wireframe **Kopi dan Nyemil**. Data disimpan sementara di memori (*dummy data*), tanpa database.
 
 ---
 
 ## ✨ Fitur Utama
 
-1. **Splash / Welcome Screen**: Halaman pembuka yang menampilkan logo aplikasi, slogan *"Get a taste of your wish"*, dan tombol mulai.
-2. **Sign Up Screen**: Halaman orientasi anggota untuk memilih masuk ke akun (*Login*) atau membuat akun baru (*Register*).
-3. **Login User**: Autentikasi masuk menggunakan *username* dan *password*.
-4. **Register**: Pendaftaran pengguna baru dengan input nama lengkap, *username*, dan *password* yang langsung tersimpan pada sesi statis.
-5. **Home (Daftar Makanan & Minuman)**: Menampilkan sapaan dinamis sesuai nama pengguna serta daftar 6 menu kopi dan camilan menggunakan `RecyclerView` lengkap dengan foto, deskripsi, dan harga.
-6. **Profile**: Menampilkan informasi profil dan fitur *Profile Setting* untuk mengubah serta menyimpan nama pengguna secara langsung.
-7. **Alamat Pengiriman (Order)**: Formulir pengiriman pesanan yang mencakup Nama Lengkap, Alamat, dan Patokan/Detail Lengkap.
-8. **Konfirmasi Pesanan**: Halaman status pesanan berhasil dibuat sebelum dikembalikan ke halaman utama.
-9. **Bottom Navigation**: Navigasi cepat antar halaman **Home**, **Order**, dan **Profile**.
+1. **Splash / Welcome**: Layar pembuka dengan logo, slogan *"Get a taste of your wish"*, dan tombol *Start now*.
+2. **Sign Up**: Pilihan untuk masuk ke akun (*Login*) atau membuat akun baru (*Register*).
+3. **Login User**: Masuk dengan *username* dan *password*. Akun demo: `budi` / `12345`. Username lain juga diterima dan akan dipakai sebagai nama sapaan.
+4. **Register**: Membuat akun baru dengan nama lengkap, *username*, dan *password*. Data langsung tersimpan selama aplikasi berjalan.
+5. **Home (Daftar Menu)**: Sapaan sesuai nama pengguna dan 6 menu kopi serta camilan dalam `RecyclerView`, lengkap dengan foto, deskripsi, dan harga. Klik item untuk memilihnya dan langsung lanjut ke tab Order.
+6. **Profile**: Melihat dan mengubah nama pengguna. Perubahan langsung tampil di sapaan.
+7. **Alamat Pengiriman (Order)**: Formulir nama penerima, alamat lengkap, dan patokan atau detail lokasi.
+8. **Konfirmasi Pesanan**: Status pesanan berhasil, lalu kembali ke halaman Home.
+9. **Bottom Navigation**: Pindah cepat antara **Home**, **Order**, dan **Profile**.
 
 ---
 
-## 🧭 Alur Penggunaan Aplikasi (User Flow)
+## 🧭 Alur Penggunaan Aplikasi
 
-    [1. Splash / Welcome] 
-            │
-            ▼
-       [2. Sign Up] ──────► [3. Login User] ──┐
-            │                                 │
-            └─────────────► [4. Register] ────┤
-                                              ▼
-                       ┌───────────────► [5. Home] ◄───────────────┐
-                       │                     │                     │
-              (Tab Profile)             (Tab Order)                │
-                       ▼                     ▼                     │
-                 [6. Profile]     [7. Alamat Pengiriman]           │
-                                             │                     │
-                                     (Order dan Kirim)             │
-                                             ▼                     │
-                                  [8. Konfirmasi Pesanan] ─────────┘
+```mermaid
+flowchart TD
+    A[1. Splash / Welcome] --> B[2. Sign Up]
+    B --> C[3. Login]
+    B --> D[4. Register]
+    C --> E[5. Home]
+    D --> E
+    E -- Tab Profile --> F[6. Profile]
+    E -- Tab Order / pilih menu --> G[7. Alamat Pengiriman]
+    G -- Order dan Kirim --> H[8. Konfirmasi Pesanan]
+    H -- Oke --> E
+```
 
 ---
 
@@ -54,45 +50,55 @@ Aplikasi mobile Android pemesanan kopi dan camilan yang dibangun menggunakan **K
 
 ## 🛠️ Teknologi & Komponen
 
-* **Bahasa Pemrograman**: Kotlin
-* **UI Layout**: XML (Android Views) & Material Design Components
-* **Komponen Daftar**: `RecyclerView` dengan Custom Adapter (`MenuAdapter`)
-* **Penyimpanan Data**: *In-Memory Static Object* (`DataDummy`) tanpa database
-* **Package Name**: `lat.pam.kopidannyemil`
+* **Bahasa**: Kotlin
+* **UI**: XML Views dengan Material Components (tema terang)
+* **Daftar Menu**: `RecyclerView` dengan `MenuAdapter`
+* **Navigasi**: `BottomNavigationView` dengan satu Activity utama untuk tiga tab
+* **Penyimpanan Data**: Objek statis `DataDummy` di memori (data kembali ke awal saat aplikasi ditutup)
+* **Min SDK**: 24 (Android 7.0)
+* **Package**: `lat.pam.kopidannyemil`
 
 ---
 
 ## 📂 Struktur Proyek
 
-    app/src/main/
-    ├── java/lat/pam/kopidannyemil/
-    │   ├── SplashActivity.kt        # Layar 1: Splash / Welcome
-    │   ├── SignUpActivity.kt        # Layar 2: Pilihan Register / Login
-    │   ├── LoginActivity.kt         # Layar 3: Form Login User
-    │   ├── RegisterActivity.kt      # Layar 4: Form Registrasi User
-    │   ├── MainActivity.kt          # Layar 5, 6, 7: Home, Profile, & Order (BottomNav)
-    │   ├── ConfirmationActivity.kt  # Layar 8: Konfirmasi Pesanan
-    │   ├── MenuAdapter.kt           # Adapter RecyclerView untuk item menu
-    │   └── DataDummy.kt             # Penyimpanan data statis user & daftar menu
-    ├── res/
-    │   ├── drawable/                # Aset foto menu dan logo aplikasi
-    │   ├── layout/                  # File XML antarmuka (activity_*.xml & item_menu.xml)
-    │   ├── menu/                    # Konfigurasi menu Bottom Navigation (bottom_nav_menu.xml)
-    │   └── values/                  # Konfigurasi warna (colors.xml), teks, dan tema
-    └── AndroidManifest.xml
+```text
+app/src/main/
+├── java/lat/pam/kopidannyemil/
+│   ├── SplashActivity.kt        # Layar 1: Splash / Welcome
+│   ├── SignUpActivity.kt        # Layar 2: Pilihan Login / Register
+│   ├── LoginActivity.kt         # Layar 3: Form Login
+│   ├── RegisterActivity.kt      # Layar 4: Form Registrasi
+│   ├── MainActivity.kt          # Layar 5, 6, 7: Home, Order, Profile (Bottom Navigation)
+│   ├── ConfirmationActivity.kt  # Layar 8: Konfirmasi Pesanan
+│   ├── MenuAdapter.kt           # Adapter RecyclerView untuk daftar menu
+│   ├── MenuItem.kt              # Model data satu item menu
+│   └── DataDummy.kt             # Data statis: profil pengguna, pesanan, dan daftar menu
+├── res/
+│   ├── drawable/                # Foto menu, logo, dan ikon navigasi (ic_nav_*.xml)
+│   ├── layout/                  # Layout XML tiap layar dan item_menu.xml
+│   ├── menu/                    # Konfigurasi Bottom Navigation
+│   ├── values/                  # Warna (colors.xml), teks (strings.xml), tema (themes.xml)
+│   └── xml/                     # Aturan backup bawaan Android
+└── AndroidManifest.xml
+
+app/src/test/                    # Unit test untuk DataDummy
+```
 
 ---
 
 ## 🚀 Cara Menjalankan Proyek
 
-1. Clone repositori ini ke komputer Anda:
+1. Clone repositori ini:
 
        git clone https://github.com/aabdlkarm/KopiDanNyemil.git
 
-2. Buka **Android Studio**, pilih **Open**, lalu arahkan ke folder proyek **KopiDanNyemil**.
-3. Tunggu hingga proses **Gradle Sync** selesai.
-4. Hubungkan perangkat Android fisik atau jalankan **Android Emulator**.
-5. Klik tombol **Run 'app'** (ikon segitiga hijau) di bagian atas Android Studio.
+2. Buka **Android Studio**, pilih **Open**, lalu arahkan ke folder **KopiDanNyemil**.
+3. Tunggu proses **Gradle Sync** selesai. Android Studio akan membuat `local.properties` secara otomatis.
+4. Jalankan di perangkat Android fisik atau **Android Emulator**.
+5. Klik **Run 'app'** (ikon segitiga hijau).
+
+Untuk menjalankan unit test, pilih `app/src/test` lalu klik **Run Tests**, atau jalankan `./gradlew test` di terminal.
 
 ---
 

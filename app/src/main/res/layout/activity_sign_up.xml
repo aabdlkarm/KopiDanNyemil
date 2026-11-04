@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:lineSpacingExtra="5dp"
-        android:text="Join as a member &amp; experience more fun from various meal at mesen_gube marketing app"
+        android:text="Bergabung sebagai member dan nikmati berbagai menu favorit di Kopi dan Nyemil."
         android:textColor="@color/text_secondary"
         android:textSize="15sp" />
 

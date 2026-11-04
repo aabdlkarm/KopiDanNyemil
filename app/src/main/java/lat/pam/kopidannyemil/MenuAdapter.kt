@@ -29,12 +29,9 @@ class MenuAdapter(
         val item = items[position]
         holder.ivFotoMenu.setImageResource(item.fotoResId)
         holder.tvNamaMenu.text = item.nama
-        holder.tvDeskripsiMenu.text = "• ${item.deskripsi}"
-        holder.tvHargaMenu.text = "• ${item.harga}"
-
-        holder.itemView.setOnClickListener {
-            onItemClick(item)
-        }
+        holder.tvDeskripsiMenu.text = item.deskripsi
+        holder.tvHargaMenu.text = item.harga
+        holder.itemView.setOnClickListener { onItemClick(item) }
     }
 
     override fun getItemCount(): Int = items.size

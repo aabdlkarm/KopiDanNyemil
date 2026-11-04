@@ -14,95 +14,123 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Layar utama dengan Bottom Navigation: Home (menu), Order (alamat), dan Profile.
+ */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var layoutHome: LinearLayout
+    private lateinit var layoutOrder: ScrollView
+    private lateinit var layoutProfile: LinearLayout
+    private lateinit var bottomNav: BottomNavigationView
 
     private lateinit var tvGreetingHome: TextView
     private lateinit var tvGreetingProfile: TextView
     private lateinit var tvSelectedOrderInfo: TextView
+
     private lateinit var etOrderNama: EditText
+    private lateinit var etOrderAlamat: EditText
+    private lateinit var etOrderPatokan: EditText
     private lateinit var etProfileNama: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val layoutHome = findViewById<LinearLayout>(R.id.layoutHome)
-        val layoutOrder = findViewById<ScrollView>(R.id.layoutOrder)
-        val layoutProfile = findViewById<LinearLayout>(R.id.layoutProfile)
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bindViews()
+        setupDaftarMenu()
+        setupBottomNavigation()
+        setupProfileSave()
+        setupOrderKirim()
+
+        perbaruiSapaanNama()
+    }
+
+    private fun bindViews() {
+        layoutHome = findViewById(R.id.layoutHome)
+        layoutOrder = findViewById(R.id.layoutOrder)
+        layoutProfile = findViewById(R.id.layoutProfile)
+        bottomNav = findViewById(R.id.bottomNavigation)
 
         tvGreetingHome = findViewById(R.id.tvGreetingHome)
         tvGreetingProfile = findViewById(R.id.tvGreetingProfile)
         tvSelectedOrderInfo = findViewById(R.id.tvSelectedOrderInfo)
+
         etOrderNama = findViewById(R.id.etOrderNama)
+        etOrderAlamat = findViewById(R.id.etOrderAlamat)
+        etOrderPatokan = findViewById(R.id.etOrderPatokan)
         etProfileNama = findViewById(R.id.etProfileNama)
+    }
 
-        val etOrderAlamat = findViewById<EditText>(R.id.etOrderAlamat)
-        val etOrderPatokan = findViewById<EditText>(R.id.etOrderPatokan)
-        val btnOrderDanKirim = findViewById<Button>(R.id.btnOrderDanKirim)
-        val btnSaveProfile = findViewById<Button>(R.id.btnSaveProfile)
-
-        // Perbarui tampilan nama pengguna
-        perbaruiSapaanNama()
-
-        // Setup RecyclerView Daftar Makanan/Minuman (6 Item)
+    /** Daftar menu di halaman Home. Klik item akan memilihnya dan pindah ke tab Order. */
+    private fun setupDaftarMenu() {
         val rvMenu = findViewById<RecyclerView>(R.id.rvMenu)
         rvMenu.layoutManager = LinearLayoutManager(this)
         rvMenu.adapter = MenuAdapter(DataDummy.daftarMenu) { item ->
-            DataDummy.itemTerpilih = "${item.nama} (${item.harga})"
-            tvSelectedOrderInfo.text = "Pesanan: ${DataDummy.itemTerpilih}"
-            Toast.makeText(this, "${item.nama} dipilih! Silakan isi alamat pengiriman.", Toast.LENGTH_SHORT).show()
+            DataDummy.itemTerpilih = DataDummy.labelPesanan(item)
+            Toast.makeText(
+                this,
+                "${item.nama} dipilih! Silakan isi alamat pengiriman.",
+                Toast.LENGTH_SHORT
+            ).show()
             bottomNav.selectedItemId = R.id.nav_order
         }
+    }
 
-        // Navigasi Bottom Navigation (Home, Order/Alamat, Profile)
+    private fun setupBottomNavigation() {
         bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    layoutHome.visibility = View.VISIBLE
-                    layoutOrder.visibility = View.GONE
-                    layoutProfile.visibility = View.GONE
-                    true
-                }
+                R.id.nav_home -> tampilkanHalaman(layoutHome)
                 R.id.nav_order -> {
-                    etOrderNama.setText(DataDummy.namaLengkap)
+                    // Isi nama hanya jika kosong, agar ketikan pengguna tidak hilang saat pindah tab
+                    if (etOrderNama.text.isNullOrBlank()) {
+                        etOrderNama.setText(DataDummy.namaLengkap)
+                    }
                     tvSelectedOrderInfo.text = "Pesanan: ${DataDummy.itemTerpilih}"
-                    layoutHome.visibility = View.GONE
-                    layoutOrder.visibility = View.VISIBLE
-                    layoutProfile.visibility = View.GONE
-                    true
+                    tampilkanHalaman(layoutOrder)
                 }
                 R.id.nav_profile -> {
                     etProfileNama.setText(DataDummy.namaLengkap)
-                    layoutHome.visibility = View.GONE
-                    layoutOrder.visibility = View.GONE
-                    layoutProfile.visibility = View.VISIBLE
-                    true
+                    tampilkanHalaman(layoutProfile)
                 }
-                else -> false
+                else -> return@setOnItemSelectedListener false
             }
+            true
         }
+    }
 
-        // Fitur Tombol "Save" pada Halaman Profile
-        btnSaveProfile.setOnClickListener {
+    /** Hanya satu halaman yang terlihat; halaman lain disembunyikan. */
+    private fun tampilkanHalaman(halaman: View) {
+        listOf(layoutHome, layoutOrder, layoutProfile).forEach {
+            it.visibility = if (it === halaman) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun setupProfileSave() {
+        findViewById<Button>(R.id.btnSaveProfile).setOnClickListener {
             val namaBaru = etProfileNama.text.toString().trim()
             if (namaBaru.isEmpty()) {
                 Toast.makeText(this, "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show()
-            } else {
-                DataDummy.namaLengkap = namaBaru
-                perbaruiSapaanNama()
-                Toast.makeText(this, "Profil berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+            DataDummy.namaLengkap = namaBaru
+            perbaruiSapaanNama()
+            Toast.makeText(this, "Profil berhasil diperbarui!", Toast.LENGTH_SHORT).show()
         }
+    }
 
-        // Fitur Tombol "Order dan Kirim" pada Halaman Alamat Pengiriman
-        btnOrderDanKirim.setOnClickListener {
+    private fun setupOrderKirim() {
+        findViewById<Button>(R.id.btnOrderDanKirim).setOnClickListener {
             val namaPenerima = etOrderNama.text.toString().trim()
             val alamat = etOrderAlamat.text.toString().trim()
             val patokan = etOrderPatokan.text.toString().trim()
 
             if (namaPenerima.isEmpty() || alamat.isEmpty()) {
-                Toast.makeText(this, "Harap isi Nama Lengkap dan Alamat Pengiriman", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Harap isi Nama Lengkap dan Alamat Pengiriman",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 

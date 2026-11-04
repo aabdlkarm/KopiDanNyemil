@@ -25,26 +25,12 @@
             app:cardCornerRadius="14dp"
             app:cardElevation="0dp">
 
-            <FrameLayout
+            <ImageView
+                android:id="@+id/ivFotoMenu"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvFotoPlaceholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="☕"
-                    android:textColor="@color/coffee_dark"
-                    android:textSize="26sp" />
-
-                <ImageView
-                    android:id="@+id/ivFotoMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Foto Menu"
-                    android:scaleType="centerCrop" />
-            </FrameLayout>
+                android:layout_height="match_parent"
+                android:contentDescription="Foto Menu"
+                android:scaleType="centerCrop" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Detail Makanan/Minuman -->
@@ -69,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="• Espresso, susu, gula aren"
+                android:text="Espresso, susu, gula aren"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 

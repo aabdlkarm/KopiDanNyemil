@@ -71,7 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:lineSpacingExtra="5dp"
-                android:text="Terima kasih sudah memesan\ntunggu aja sebentar kurir kami\nsegera mengantarkan\npesananmu!"
+                android:text="Terima kasih sudah memesan&#10;tunggu aja sebentar, kurir kami&#10;segera mengantarkan pesananmu!"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 
