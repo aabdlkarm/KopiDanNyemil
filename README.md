@@ -38,7 +38,29 @@ Aplikasi Android pemesanan kopi dan camilan, dibangun dengan **Kotlin** dan **XM
                                              ▼                     │
                                   [8. Konfirmasi Pesanan] ─────────┘
 ```
+Picture
 
+1. Splash
+<img width="1080" height="2408" alt="Screenshot_20261104_180126 jpg" src="https://github.com/user-attachments/assets/8a314c42-4c41-498b-95d3-0734f026786f" />
+
+3. Sign Up
+<img width="1080" height="2408" alt="Screenshot_20261104_180129 jpg" src="https://github.com/user-attachments/assets/4e326705-877c-4067-9ddd-dfad06dc043a" />
+  
+6. Login User
+<img width="1080" height="2408" alt="Screenshot_20261104_180144 jpg" src="https://github.com/user-attachments/assets/d32a1cb4-2fb0-489c-b091-f5e18389ba3c" />
+  
+8. Register
+<img width="1080" height="2408" alt="Screenshot_20261104_180139 jpg" src="https://github.com/user-attachments/assets/107e816f-2357-41a5-9097-a631f9970f67" />
+  
+10. Home
+<img width="1080" height="2408" alt="Screenshot_20261104_180213 jpg" src="https://github.com/user-attachments/assets/0be0316a-d7dd-4d0c-8754-bad0f5746743" />
+   
+12. Tab Profile
+<img width="1080" height="2408" alt="Screenshot_20261104_180302 jpg" src="https://github.com/user-attachments/assets/00a66bd7-b44e-4c86-850c-786d18b8f0c4" />
+
+14. Tab Order
+<img width="1080" height="2408" alt="Screenshot_20261104_180233 jpg" src="https://github.com/user-attachments/assets/802a215a-63ab-4e0a-b45a-1cf8ddbdb5fa" />
+    
 ---
 
 ## 🥐 Daftar Menu (Dummy Data)
