@@ -20,17 +20,23 @@ Aplikasi Android pemesanan kopi dan camilan, dibangun dengan **Kotlin** dan **XM
 
 ## 🧭 Alur Penggunaan Aplikasi
 
-```mermaid
-flowchart TD
-    A[1. Splash / Welcome] --> B[2. Sign Up]
-    B --> C[3. Login]
-    B --> D[4. Register]
-    C --> E[5. Home]
-    D --> E
-    E -- Tab Profile --> F[6. Profile]
-    E -- Tab Order / pilih menu --> G[7. Alamat Pengiriman]
-    G -- Order dan Kirim --> H[8. Konfirmasi Pesanan]
-    H -- Oke --> E
+```
+[1. Splash / Welcome] 
+            │
+            ▼
+       [2. Sign Up] ──────► [3. Login User] ──┐
+            │                                 │
+            └─────────────► [4. Register] ────┤
+                                              ▼
+                       ┌───────────────► [5. Home] ◄───────────────┐
+                       │                     │                     │
+              (Tab Profile)             (Tab Order)                │
+                       ▼                     ▼                     │
+                 [6. Profile]     [7. Alamat Pengiriman]           │
+                                             │                     │
+                                     (Order dan Kirim)             │
+                                             ▼                     │
+                                  [8. Konfirmasi Pesanan] ─────────┘
 ```
 
 ---
