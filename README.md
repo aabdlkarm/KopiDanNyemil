@@ -38,7 +38,7 @@ Aplikasi Android pemesanan kopi dan camilan, dibangun dengan **Kotlin** dan **XM
                                              ▼                     │
                                   [8. Konfirmasi Pesanan] ─────────┘
 ```
-Picture
+## Picture
 
 1. Splash
 <img width="300" alt="Screenshot_20261104_180126 jpg" src="https://github.com/user-attachments/assets/8a314c42-4c41-498b-95d3-0734f026786f" />
